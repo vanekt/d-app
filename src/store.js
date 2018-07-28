@@ -1,24 +1,24 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from './reducers';
-// import createLogger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga';
-// import { routerMiddleware } from 'react-router-redux';
+import { createLogger } from 'redux-logger';
+import reducers from './reducers';
 
-// const logger = createLogger()
 const sagaMiddleware = createSagaMiddleware();
+
+let optionalMiddlewares = [];
+if (process.env.NODE_ENV === 'development') {
+  const logger = createLogger({ collapsed: true, diff: true });
+  optionalMiddlewares.push(logger);
+}
 
 let composeEnhancers = compose;
 if (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 }
 
-export default function configureStore(initialState = {}, history) {
+export default function configureStore(initialState = {}) {
   // Create the store with two middlewares
-  const middlewares = [
-    sagaMiddleware
-    // routerMiddleware(history)
-    //, logger
-  ];
+  const middlewares = [sagaMiddleware, ...optionalMiddlewares];
 
   const enhancers = [applyMiddleware(...middlewares)];
 

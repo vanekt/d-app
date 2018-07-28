@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import sagas from './sagas';
@@ -15,15 +17,16 @@ const api = {
   auth: new AuthApi('')
 };
 
-const history = null; // TODO:
-const store = configureStore({}, history);
+const store = configureStore({});
 store.runSaga(sagas, {
   api
 });
 
 render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
