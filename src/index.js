@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
 
 import { Provider } from 'react-redux';
 import configureStore from './store';
@@ -17,16 +18,17 @@ const api = {
   auth: new AuthApi('')
 };
 
-const store = configureStore({});
+const history = createBrowserHistory();
+const store = configureStore({}, history);
 store.runSaga(sagas, {
   api
 });
 
 render(
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <App />
-    </Router>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );

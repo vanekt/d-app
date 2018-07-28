@@ -1,4 +1,4 @@
-const prefix = 'USER/';
+const prefix = 'user/';
 
 export const INIT_REQUEST = prefix + 'INIT_REQUEST';
 export const INIT_SUCCESS = prefix + 'INIT_SUCCESS';
