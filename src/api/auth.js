@@ -1,4 +1,4 @@
-import { apiVersion, getOptions, postOptions, toJson } from './common';
+import { apiVersion, getOptions, postOptions, toJson, errorToTransport } from './common';
 
 /**
  * Auth api.

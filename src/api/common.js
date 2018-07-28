@@ -1,4 +1,4 @@
-import { ErrorCode } from '../constants';
+import { ErrorCode } from '../constants/api';
 
 export function toJson(r) {
   return r.json();
