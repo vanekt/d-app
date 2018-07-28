@@ -8,11 +8,16 @@
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7"
   },
   "scripts": {
+    "doc": "esdoc",
     "format": "prettier --single-quote --write 'src/**/*.{js,jsx,json,css,scss}'",
     "precommit": "lint-staged",
     "start": "react-scripts start",
