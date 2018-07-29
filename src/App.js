@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import First from './components/First';
 import Second from './components/Second';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {
